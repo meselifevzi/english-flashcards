@@ -54,7 +54,7 @@ const Card = ({ word, level, pronunciation, meaning, example, example_tr, cardNu
               </svg>
             </button>
             <p 
-              className="text-secondary-light dark:text-secondary-dark text-base md:text-lg 
+              className="relative text-secondary-light dark:text-secondary-dark text-base md:text-lg 
                 italic leading-relaxed px-2 md:px-4 cursor-help transition-colors duration-200 
                 hover:text-accent-light dark:hover:text-accent-dark"
               onMouseEnter={() => setShowTranslation(true)}
@@ -62,10 +62,10 @@ const Card = ({ word, level, pronunciation, meaning, example, example_tr, cardNu
             >
               "{example}"
               {showTranslation && example_tr && (
-                <span className="absolute left-1/2 transform -translate-x-1/2 bottom-[-5.5rem] 
-                  w-11/12 md:w-8/12 bg-blue-400 dark:bg-blue-500 text-white p-2.5 
+                <span className="absolute left-1/2 transform -translate-x-1/2 bottom-[-5rem] 
+                  w-11/12 md:w-10/12 bg-blue-400 dark:bg-blue-500 text-white p-2.5 
                   md:p-3 rounded-lg text-sm md:text-base font-medium shadow-lg 
-                  border border-blue-300 dark:border-blue-400 
+                  border border-blue-300 dark:border-blue-400
                   transition-all duration-200 ease-in-out z-20">
                   {example_tr}
                 </span>
