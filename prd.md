@@ -13,6 +13,8 @@
 ### Yapılacaklar
 - [ ] Sesli telaffuz bölümü
 - [ ] Random 10 Kelime (Her seviyeden karışık olacak şekilde 10 kelime oluştursun. 10 kelime bittiğinde ekranda web mesaj olarak yeşil renkte "Tebrikler" yazsın.)
+- [ ] Günlük siteye kaç kişi girdiği bilgisi tutulacak.(Tarih-saat ve )
+- [ ] Bir butona tıklandığında pop-up şeklinde kişi kendi mail adresiyle geliştirme/düzenleme yapılması için mail atılmasını sağla.
 - [ ] Kullanıcı kimlik doğrulamasını uygula
 - [ ] Yüklenme durumları ve hata yönetimini ekle
 
@@ -32,11 +34,6 @@ CREATE TABLE word_cards (
 ```
 
 ### Tamamlananlar
-- [x] Karanlık mod desteği
-  - [x] Karanlık/Aydınlık mod geçiş butonu
-  - [x] Renk paleti güncellendi
-  - [x] Tüm bileşenler için karanlık mod stilleri
-  - [x] Geçiş animasyonları
 - [x] React projesi kur
 - [x] Tailwind CSS yapılandırmasını yap
 - [x] Supabase projesi ve veritabanını oluştur
@@ -64,6 +61,14 @@ CREATE TABLE word_cards (
   - [x] Dark mode desteği
   - [x] Hover ve active durumları iyileştirildi
   - [x] Geçiş animasyonları eklendi
+- [x] Karanlık mod desteği
+  - [x] Karanlık/Aydınlık mod geçiş butonu
+  - [x] Renk paleti güncellendi
+  - [x] Tüm bileşenler için karanlık mod stilleri
+  - [x] Geçiş animasyonları
+- [x] Sesli telaffuz özelliği eklendi
+  - [x] Web Speech API entegrasyonu
+  - [x] İngilizce cümle telaffuzu
 
 ### UI Bileşen Yapısı
 1. **Kart Bileşeni**
