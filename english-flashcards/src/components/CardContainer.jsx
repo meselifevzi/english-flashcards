@@ -7,6 +7,9 @@ import { useSupabase } from '../hooks/useSupabase';
 const CardContainer = ({ darkMode, onDarkModeToggle }) => {
   const [currentCard, setCurrentCard] = useState(0);
   const [selectedLevels, setSelectedLevels] = useState(['A1']);
+  const [showCompletionMessage, setShowCompletionMessage] = useState(false);
+  const [randomMode, setRandomMode] = useState(false);
+  const [completedCards, setCompletedCards] = useState(0);
   const { cards, loading, error } = useSupabase();
 
   // Debug logs
@@ -30,9 +33,52 @@ const CardContainer = ({ darkMode, onDarkModeToggle }) => {
     return shuffleArray(filtered);
   }, [cards, selectedLevels]);
 
+  // Random 10 cards function
+  const handleRandomTenCards = () => {
+    const randomCards = [];
+    const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    
+    // Get random cards from each level
+    levels.forEach(level => {
+      const levelCards = cards.filter(card => card.level === level);
+      const shuffled = shuffleArray([...levelCards]);
+      randomCards.push(...shuffled.slice(0, 2)); // Get 2 cards from each level
+    });
+
+    setRandomMode(true);
+    setCompletedCards(0);
+    setShowCompletionMessage(false);
+    setCurrentCard(0);
+    return shuffleArray(randomCards.slice(0, 10));
+  };
+
   const handleNext = () => {
-    if (currentCard < filteredCards.length - 1) {
-      setCurrentCard(prev => prev + 1);
+    if (randomMode) {
+      if (completedCards + 1 >= 10) {
+        // Show completion message first
+        setShowCompletionMessage(true);
+        setCompletedCards(prev => prev + 1);
+        
+        // Reset to default state after a short delay
+        setTimeout(() => {
+          setRandomMode(false);
+          setCompletedCards(0);
+          setShowCompletionMessage(false);
+          setSelectedLevels(['A1']);
+          setCurrentCard(0);
+        }, 2000); // 2 second delay
+      } else {
+        // Continue counting up to 10 cards
+        setCompletedCards(prev => prev + 1);
+        if (currentCard < filteredCards.length - 1) {
+          setCurrentCard(prev => prev + 1);
+        }
+      }
+    } else {
+      // Normal mode behavior
+      if (currentCard < filteredCards.length - 1) {
+        setCurrentCard(prev => prev + 1);
+      }
     }
   };
 
@@ -69,7 +115,17 @@ const CardContainer = ({ darkMode, onDarkModeToggle }) => {
         onLevelChange={handleLevelChange}
         darkMode={darkMode}
         onDarkModeToggle={onDarkModeToggle}
+        onRandomTenCards={handleRandomTenCards}
       />
+      {showCompletionMessage && (
+        <div className="text-center mb-4">
+          <div className="inline-block px-6 py-3 rounded-lg bg-green-100 dark:bg-green-800 
+            text-green-700 dark:text-green-100 font-medium text-base md:text-lg 
+            transition-all duration-300 animate-fade-in">
+            Tebrikler! 10 Kelimeyi tamamladınız 🎉
+          </div>
+        </div>
+      )}
       <Card
         word={card.word}
         level={card.level}
@@ -86,7 +142,8 @@ const CardContainer = ({ darkMode, onDarkModeToggle }) => {
         disablePrevious={currentCard === 0}
       />
       <div className="text-center mt-4 text-sm md:text-base text-gray-500">
-        Showing card {currentCard + 1} of {filteredCards.length}
+        {randomMode ? `${completedCards}/10 Cards` : 
+          `Showing card ${currentCard + 1} of ${filteredCards.length}`}
       </div>
     </div>
   );
