@@ -11,12 +11,12 @@
 ## İhtiyaçlar
 
 ### Yapılacaklar
-- [ ] Sesli telaffuz bölümü
-- [ ] Random 10 Kelime (Her seviyeden karışık olacak şekilde 10 kelime oluştursun. 10 kelime bittiğinde ekranda web mesaj olarak yeşil renkte "Tebrikler" yazsın.)
+- [ ] Ücretsiz olarak app yayınla.
+- [ ] Yüklenme durumları ve hata yönetimini ekle
 - [ ] Günlük siteye kaç kişi girdiği bilgisi tutulacak.(Tarih-saat ve )
 - [ ] Bir butona tıklandığında pop-up şeklinde kişi kendi mail adresiyle geliştirme/düzenleme yapılması için mail atılmasını sağla.
 - [ ] Kullanıcı kimlik doğrulamasını uygula
-- [ ] Yüklenme durumları ve hata yönetimini ekle
+
 
 
 ### Database Schema (Supabase)
@@ -69,6 +69,14 @@ CREATE TABLE word_cards (
 - [x] Sesli telaffuz özelliği eklendi
   - [x] Web Speech API entegrasyonu
   - [x] İngilizce cümle telaffuzu
+  - [x] 10 kelime tamamlandığında bildirim sistemi
+  - [x] Yeşil renkli tebrik mesajı
+  - [x] 2 saniye görüntüleme süresi
+  - [x] Otomatik sıfırlama sistemi
+- [x] 10 kelime tamamlandığında bildirim sistemi
+  - [x] Yeşil renkli tebrik mesajı
+  - [x] 2 saniye görüntüleme süresi
+  - [x] Otomatik sıfırlama sistemi
 
 ### UI Bileşen Yapısı
 1. **Kart Bileşeni**
@@ -104,3 +112,8 @@ FOR SELECT
 TO public 
 USING (true);
 ```
+
+## Veri tabanı Size,Yüzdelik Sorgu
+SELECT 
+  pg_size_pretty(pg_database_size(current_database())) AS db_size,
+  ROUND(pg_database_size(current_database()) / 500000000.0 * 100, 2) AS used_percent;

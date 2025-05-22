@@ -6,7 +6,7 @@ import { useSupabase } from '../hooks/useSupabase';
 
 const CardContainer = ({ darkMode, onDarkModeToggle }) => {
   const [currentCard, setCurrentCard] = useState(0);
-  const [selectedLevels, setSelectedLevels] = useState(['A1']);
+  const [selectedLevels, setSelectedLevels] = useState(['A1','A2','B1','B2','C1','C2']);  
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
   const [randomMode, setRandomMode] = useState(false);
   const [completedCards, setCompletedCards] = useState(0);
@@ -64,7 +64,7 @@ const CardContainer = ({ darkMode, onDarkModeToggle }) => {
           setRandomMode(false);
           setCompletedCards(0);
           setShowCompletionMessage(false);
-          setSelectedLevels(['A1']);
+          setSelectedLevels(['A1','A2','B1','B2','C1','C2']); 
           setCurrentCard(0);
         }, 2000); // 2 second delay
       } else {
