@@ -11,7 +11,12 @@
 ## İhtiyaçlar
 
 ### Yapılacaklar
-- [ ] Ücretsiz olarak app yayınla.
+- [ ] Kelimenin türkçe anlamı görünür olmamalı.
+- [ ] Sayfa ortalansın 2k çözünürlük için kontrol et.
+- [ ] Kelime teleffuzu eklenmeli.
+- [ ] C, B seviye kelime eklenmeli.
+- [ ] İngilizce cümleleri türkçesini de okuyor,kontrol edilecek.
+- [ ] Filmlerdeki kısa kesitler eklenebilir.
 - [ ] Yüklenme durumları ve hata yönetimini ekle
 - [ ] Günlük siteye kaç kişi girdiği bilgisi tutulacak.(Tarih-saat ve )
 - [ ] Bir butona tıklandığında pop-up şeklinde kişi kendi mail adresiyle geliştirme/düzenleme yapılması için mail atılmasını sağla.
@@ -77,6 +82,7 @@ CREATE TABLE word_cards (
   - [x] Yeşil renkli tebrik mesajı
   - [x] 2 saniye görüntüleme süresi
   - [x] Otomatik sıfırlama sistemi
+- [x] Ücretsiz olarak app yayınla.
 
 ### UI Bileşen Yapısı
 1. **Kart Bileşeni**
