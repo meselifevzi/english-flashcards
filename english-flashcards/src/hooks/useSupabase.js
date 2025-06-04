@@ -45,9 +45,38 @@ export const useSupabase = () => {
     }
   };
 
+  const updateVisitorCount = async () => {
+    const today = new Date().toISOString().split('T')[0];
+    
+    try {
+      // Önce bugünün kaydını kontrol et
+      const { data: existingRecord } = await supabase
+        .from('daily_visitors')
+        .select('*')
+        .eq('visit_date', today)
+        .single();
+
+      if (existingRecord) {
+        // Kayıt varsa güncelle
+        await supabase
+          .from('daily_visitors')
+          .update({ visit_count: existingRecord.visit_count + 1 })
+          .eq('visit_date', today);
+      } else {
+        // Kayıt yoksa yeni kayıt oluştur
+        await supabase
+          .from('daily_visitors')
+          .insert([{ visit_count: 1, visit_date: today }]);
+      }
+    } catch (error) {
+      console.error('Visitor count update error:', error);
+    }
+  };
+
   useEffect(() => {
     fetchCards();
+    updateVisitorCount(); // Ziyaretçi sayısını güncelle
   }, []);
 
-  return { cards, loading, error, fetchCards, addCard };
+  return { cards, loading, error, fetchCards, addCard, updateVisitorCount };
 };

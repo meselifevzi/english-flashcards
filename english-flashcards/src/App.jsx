@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import CardContainer from './components/CardContainer';
+import { useSupabase } from './hooks/useSupabase';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const { updateVisitorCount } = useSupabase();
+
+  useEffect(() => {
+    updateVisitorCount();
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
