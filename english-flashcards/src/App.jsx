@@ -21,6 +21,10 @@ const App = () => {
           English Flashcards
         </h1>
         <CardContainer darkMode={darkMode} onDarkModeToggle={() => setDarkMode(!darkMode)} />
+        <footer className="text-center mt-8 mb-4 text-sm md:text-base text-secondary-light 
+          dark:text-secondary-dark transition-colors duration-200">
+          Crafted with ✨ by Fevzi
+        </footer>
       </div>
     </div>
   );

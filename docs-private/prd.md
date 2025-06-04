@@ -11,11 +11,10 @@
 ## İhtiyaçlar
 
 ### Yapılacaklar
-- [ ] Kelimenin türkçe anlamı görünür olmamalı.
 - [ ] Sayfa ortalansın 2k çözünürlük için kontrol et.
 - [ ] Kelime teleffuzu eklenmeli.
 - [ ] C, B seviye kelime eklenmeli.
-- [ ] İngilizce cümleleri türkçesini de okuyor,kontrol edilecek.
+- [ ] İngilizce cümleleri türkçesini de okuyor,kontrol edilecek.-Okumuyor Test edildi.
 - [ ] Filmlerdeki kısa kesitler eklenebilir.
 - [ ] Yüklenme durumları ve hata yönetimini ekle
 - [ ] Günlük siteye kaç kişi girdiği bilgisi tutulacak.(Tarih-saat ve )
@@ -83,6 +82,7 @@ CREATE TABLE word_cards (
   - [x] 2 saniye görüntüleme süresi
   - [x] Otomatik sıfırlama sistemi
 - [x] Ücretsiz olarak app yayınla.
+- [x] Kelimenin türkçe anlamı ve türkçe cümlesi görünür olmamalı.
 
 ### UI Bileşen Yapısı
 1. **Kart Bileşeni**
