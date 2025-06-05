@@ -99,14 +99,13 @@ const Card = ({ word, level, pronunciation, meaning, example, example_tr, cardNu
               "{example}"
               {example_tr && (
                 <span 
+                  translate="no" 
                   className="absolute left-1/2 transform -translate-x-1/2 bottom-[-5rem] 
                     w-11/12 md:w-10/12 bg-blue-400/80 dark:bg-blue-500/80 text-white p-2.5 
                     md:p-3 rounded-lg text-sm md:text-base font-medium shadow-lg 
                     border border-blue-300 dark:border-blue-400
                     transition-all duration-300 ease-in-out z-20
                     blur-[3px] hover:blur-none cursor-pointer"
-                  onMouseEnter={() => setShowTranslation(true)}
-                  onMouseLeave={() => setShowTranslation(false)}
                 >
                   {example_tr}
                 </span>

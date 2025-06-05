@@ -35,6 +35,16 @@ CREATE TABLE word_cards (
   card_number INTEGER NOT NULL,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+CREATE TABLE daily_visitors (
+    id SERIAL PRIMARY KEY,
+    visit_count INT DEFAULT 0,
+    visit_date DATE DEFAULT CURRENT_DATE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('UTC', NOW())
+);
+
+-- Benzersiz tarih kontrolü için index
+CREATE UNIQUE INDEX unique_date ON daily_visitors(visit_date);
 ```
 
 ### Tamamlananlar
@@ -83,6 +93,7 @@ CREATE TABLE word_cards (
   - [x] Otomatik sıfırlama sistemi
 - [x] Ücretsiz olarak app yayınla.
 - [x] Kelimenin türkçe anlamı ve türkçe cümlesi görünür olmamalı.
+- [x] Web sitesine 24 saatlik kaç kişi girdiği bilgisi veri tabanı olarak eklendi.
 
 ### UI Bileşen Yapısı
 1. **Kart Bileşeni**
